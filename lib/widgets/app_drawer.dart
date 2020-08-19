@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/providers/auth.dart';
 import 'package:online_shop/screens/order_screen.dart';
 import 'package:online_shop/screens/products_overview_screen.dart';
 import 'package:online_shop/screens/user_products_screen.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -44,6 +46,18 @@ class AppDrawer extends StatelessWidget {
               color: Theme.of(context).primaryColor,
             ),
             title: Text("Manage product"),
+          ),
+          Divider(),
+          ListTile(
+            onTap: () {
+              Navigator.of(context).pop();
+              Provider.of<Auth>(context, listen: false).logout();
+            },
+            leading: Icon(
+              Icons.exit_to_app,
+              color: Theme.of(context).primaryColor,
+            ),
+            title: Text("Logout"),
           ),
           Divider(),
         ],
